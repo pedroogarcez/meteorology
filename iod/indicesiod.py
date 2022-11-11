@@ -42,7 +42,9 @@ datamediaJFM1891_2019 = dt_time[0:len(dt_time):12]
 
 #Construindo o gráfico
 plt.plot(datamediaJFM1891_2019,iodJFM)
-print(len(datamediaJFM1891_2019))
+plt.title('Dipolo de Índico JFM',fontweight='bold')
+plt.axhline(0.0,linestyle='--',color='k')
+
 
 
 plt.show()
