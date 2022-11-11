@@ -29,6 +29,7 @@ precip = precip/30.0
 dt_time = [dt.date(1891, 1, 1) + dt.timedelta(hours=t) 
            for t in time]
 
+print(len(dt_time))
 
 #Objetivo: Calcular a anomalia referente a JFM de 2019
 #AnomaliaJFM2019 = médiaJFM2019 - mediaJFM1891-2019
@@ -89,7 +90,6 @@ medialat = np.ma.mean(precip[:,lat_idx1:lat_idx2,:],axis = 1)
 mediaquadrado = np.ma.mean(medialat[:,lon_idx1:lon_idx2],axis = 1)
 
 
-
 jan1891_2019 = mediaquadrado[0:len(precip):12]
 fev1891_2019 = mediaquadrado[1:len(precip):12]
 marco1891_2019 = mediaquadrado[2:len(precip):12]
@@ -107,6 +107,6 @@ alltime = dt_time[0:1548:12]
 plt.figure()
 plt.plot(alltime,anomalia,color='k')
 plt.axhline(0,linestyle='--')
-
+plt.title('Precipitation anomaly of southeast Brazil')
 plt.show()
 
