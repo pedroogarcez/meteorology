@@ -46,5 +46,5 @@ medialat = np.mean(sst[:,lat1:lat2,:],axis=1)
 #A partir da media criada para latitude, calcula-se uma nova média. Como temos duas dimensões (lons e time), ao calcular a média para lons, teremos como resultado varios pontos em time representando a media de lat e lons.
 #Media cubo -> Media quadrado -> Linha
 mediaquadrado = np.mean(medialat[:,lon1:lon2],axis = 1)
-
+print(mediaquadrado)
 
