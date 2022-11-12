@@ -12,6 +12,7 @@ df['Data'] = df['DateTime'].astype('datetime64')
 
 #Convertendo para lista os valores de indices e datas
 datas = df['Data'].tolist()
+
 iodindex = df['índice'].tolist()
 
 dt_time = datas[252:1800]
@@ -43,8 +44,6 @@ datamediaJFM1891_2019 = dt_time[0:len(dt_time):12]
 #Construindo o gráfico
 plt.plot(datamediaJFM1891_2019,iodJFM)
 plt.title('Dipolo de Índico JFM',fontweight='bold')
-plt.axhline(0.0,linestyle='--',color='k')
-
-
+plt.axhline(0.0,linestyle='--',color='r')
 
 plt.show()
