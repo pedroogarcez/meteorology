@@ -25,7 +25,7 @@ pip install matplotlib
 
 <h2> Climatological situation in 2020 and 2021</h2>
 <p align="justify"> 
-During this project, the studies was about the dry impacts that affected the Southeastern Brazil in the summer season (January, February and March). Since the beggining of the decade, is possible to see the negative values from wather flow in Sistema Cantareira, the main water supply system in the state of São Paulo. This scenario show the low indexes of precipitation that hit the region with the highest population density of the country.
+During this project, the studies was about the dry impacts that affected the Southeastern Brazil in the summer season (January, February and March). Since the beggining of the decade, is possible to see the negative wather flow values in Sistema Cantareira, the main water supply system in the state of São Paulo. This scenario show the low indexes of precipitation that hit the region with the highest population density of the country. The figure below (vazaocantareira.py) show this situation.
 </p>
 
 
