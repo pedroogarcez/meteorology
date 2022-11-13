@@ -25,11 +25,11 @@ pip install matplotlib
 
 <h2> Climatological situation in 2020 and 2021</h2>
 <p align="justify"> 
-During this project, the studies was about the dry impacts that affected the Southeastern Brazil in the summer season (January, February and March). Since the beggining of the decade, is possible to see the negative wather flow values in Sistema Cantareira, the main water supply system in the state of São Paulo. This scenario show the low indexes of precipitation that hit the region with the highest population density of the country. The figure below <i>(tempxprecip.py)</i> show this situation, where we can see the high temperature and low precipitation in 2020 and 2021. 
-</p>
+During this project, the studies was about the dry impacts that affected the Southeastern Brazil in the summer season (January, February and March). Since the beggining of the decade, is possible to see the negative wather flow values in Sistema Cantareira, the main water supply system in the state of São Paulo. This scenario show the low indexes of precipitation that hit the region with the highest population density of the country, with high temperatures and few rains.</p>
+  <p align = "center"> 2020 Anomaly = JFM average 2020 - JFM average (1870-2020) </p>
 
 
-![tempxprecip](https://user-images.githubusercontent.com/99915694/201528551-e742f9c5-aaf7-4a55-8c17-3ad7fc316c7d.png)
+
 
 
 
