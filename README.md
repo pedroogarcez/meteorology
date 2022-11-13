@@ -29,6 +29,12 @@ During this project, the studies was about the dry impacts that affected the Sou
 </p>
 
 
+![tempxprecip](https://user-images.githubusercontent.com/99915694/201528551-e742f9c5-aaf7-4a55-8c17-3ad7fc316c7d.png)
+
+
+
+
+
 
 <h5> Acknowledgments </h5>
 <p> The teachers: S. N. Figueroa, PhD and J. A. A. Manco, PhD </p>
