@@ -25,7 +25,7 @@ pip install matplotlib
 
 <h2> Climatological situation in 2020 and 2021</h2>
 <p align="justify"> 
-Since the beggining of the decade, is possible to see the negative anomaly water flow values in Sistema Cantareira, the main water supply system in the state of São Paulo. This scenario show the low indexes of precipitation that hit the highest population density region of the country, with high temperatures and few rains. The possible causes are about phenomenon that happen around the country and are related with the El Niño/Southern Oscilation
+Since the beggining of the decade, is possible to see the negative anomaly water flow values in Sistema Cantareira, the main water supply system in the state of São Paulo. This scenario show the low indexes of precipitation that hit the highest population density region of the country, with high temperatures and few rains. The principal reason is La Niña, the cool phase of ENSO that change the sea surface temperature and consequently the trade winds and water patterns in Equatorial Pacific.
 </p>
 
   
