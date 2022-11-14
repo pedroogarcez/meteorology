@@ -27,7 +27,7 @@ pip install matplotlib
 <p align="justify"> 
 Since the beggining of the decade, is possible to see the negative anomaly water flow values in Sistema Cantareira, the main water supply system in the state of São Paulo. This scenario show the low indexes of precipitation that hit the highest population density region of the country, with high temperatures and few rains.
 </p>
-<h2> Possibles causes that 
+
   <p align = "center"> 2020 Anomaly = JFM average 2020 - JFM average (1870-2020) </p>
   
 <h5> Acknowledgments </h5>
