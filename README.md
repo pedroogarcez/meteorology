@@ -33,5 +33,7 @@ Since the beggining of the decade, is possible to see the negative anomaly water
 <h5> Acknowledgments </h5>
 <p> The teachers: S. N. Figueroa, PhD and J. A. A. Manco, PhD </p>
 
+[PIBIC_Pedro_GArcez_Corrigido.pdf](https://github.com/pedroogarcez/meteorology/files/10006859/PIBIC_Pedro_GArcez_Corrigido.pdf)
+
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
