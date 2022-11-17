@@ -2,6 +2,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+#A partir dos dados disponibilizados pela
+
+
 #Criando o data frame
 df = pd.read_csv('indian-ocean-dipole-iod (1).csv')
 
