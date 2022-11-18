@@ -90,10 +90,24 @@ medialat = np.ma.mean(precip[:,lat_idx1:lat_idx2,:],axis = 1)
 mediaquadrado = np.ma.mean(medialat[:,lon_idx1:lon_idx2],axis = 1)
 
 
+#Agora, criamos um vetor que contém as médias da região do Sistema Cantareira. A anomalia de precipitação será calculada para esse espaço
+'''
+Anomalia de precipitação na região Sudeste = Média de precipitação JFM xxxx na região Sudeste (1) - Média de precipitação JFM 1891-2019 na região Sudeste (2)
+'''
+
+# -- (1)
+#print(f'O elemento {mediaquadrado[i]} corresponde a {dt_time}[i]') for i in range(dt_time))
+for i in range(len(dt_time)):
+    print(f'O elemento {mediaquadrado[i]} corresponde a {dt_time[i]} ')
+exit()
+
+
+
+# -- (2) SELECIONANDO OS MESES DE JFM DE 1891 - 2019 NA REGIÃO SUDESTE
 jan1891_2019 = mediaquadrado[0:len(precip):12]
 fev1891_2019 = mediaquadrado[1:len(precip):12]
 marco1891_2019 = mediaquadrado[2:len(precip):12]
-alltrimestre = (jan1891_2019 + fev1891_2019 + marco1891_2019)/3.0
+media_cant_1891_2019_JFM = (jan1891_2019+fev1891_2019+marco1891_2019)/3.0
 
 mediajaneiro = np.mean(jan1891_2019)
 mediafevereiro = np.mean(fev1891_2019)
@@ -103,10 +117,13 @@ mediatotalmeses = (mediajaneiro+mediafevereiro+mediamarco)/3.0
 anomalia = alltrimestre-mediatotalmeses
 alltime = dt_time[0:1548:12]
 
-#Plotando o gráfico de anomalia de precipitação para a região Sudeste do Brasil
+#Plotando o gráfico de linhas de anomalia de precipitação para a região Sudeste do Brasil
 plt.figure()
 plt.plot(alltime,anomalia,color='k')
 plt.axhline(0,linestyle='--')
 plt.title('Precipitation anomaly of southeast Brazil',fontweight='bold')
+
+#Plotando o mapa de precipitação de anomalia 
+#fig = plot_anom(anomalia,lats,lons,'Anomalia precipitação (mm/dia) verão (JFM) 1891-2019','anomprecip1891_2019')
 plt.show()
 
