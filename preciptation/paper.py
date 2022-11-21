@@ -24,6 +24,7 @@ dt_time = [dt.date(1891, 1, 1) + dt.timedelta(hours=t)
 
 # Criando uma série temporal com as mesmas datas do paper
 dt_time = dt_time[816:1308]
+print(dt_time[8:11])
 
 # --
 # Agora vamos criar o plot de linhas, referentes as coordenadas da região central de acordo com CHAN et al
@@ -44,39 +45,48 @@ medialat = np.ma.mean(precip[:, lat_idx1:lat_idx2, :], axis=1)
 # Calculnado a média da longitude
 mediaquadrado = np.ma.mean(medialat[:, lon_idx1:lon_idx2], axis=1)
 
-# -- SELECIONANDO OS MESES DE JFM DE 1891 - 2019 NA REGIÃO SUDESTE
+
 set1891_2019 = mediaquadrado[8::12]
 out1891_2019 = mediaquadrado[9::12]
 nov1891_2019 = mediaquadrado[10::12]
+listafinal = set1891_2019+out1891_2019+nov1891_2019
+sum = (set1891_2019+out1891_2019+nov1891_2019)/3.0
+ponto = np.mean(sum)
+
+
+
+# -- SELECIONANDO OS MESES DE JFM DE 1891 - 2019 NA REGIÃO SUDESTE
+set1891_2019 = np.mean(mediaquadrado[8::12])
+out1891_2019 = np.mean(mediaquadrado[9::12])
+nov1891_2019 = np.mean(mediaquadrado[10::12])
+mediatrimestre1891_2019 = (set1891_2019+out1891_2019+nov1891_2019)/3.0
 
 
 # -- (1) SELECIONANDO OS MESES DE SON CADA ANO NA REGIÃO CENTRAL
 index1 = 8
-index2 = 10
+index2 = 11
 media_precip_son = []
 
-for i in range(int(len(precip) / 12)):
+for i in range(int(len(precip)/12)):
     delta_data = mediaquadrado[index1:index2]
+    print(delta_data)
     media = np.ma.mean(delta_data)
+    print(media)
     media_precip_son.append(media)
     index1 += 12
     index2 += 12
 
 #print(media_precip_son)
+
 # -- (2) CALCULANDO A MÉDIA DE MÉDIA DE TOD0 INTERVALO DE TEMPO NA REGIÃO CENTRAL
 
-# print(len(set1891_2019)+len(out1891_2019)+len(nov1891_2019))
-media_central_1891_2019 = np.sum(set1891_2019 + out1891_2019 + nov1891_2019)
-#print(media_central_1891_2019)
-exit()
-
 # Anomalia = (1) - (2)
-anomalia = media_precip_son - media_central_1891_2019
+anomalia = media_precip_son - ponto
 
 # Criando o eixo x
 data = dt_time[0::12]
 
-# plt.plot(data,anomalia)
+plt.plot(data,anomalia)
 #plt.plot(data, anomalia)
 # plt.axhline(0.0,linestyle='--')
 #plt.show()
