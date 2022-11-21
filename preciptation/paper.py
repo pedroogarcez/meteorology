@@ -8,32 +8,34 @@ from mpl_toolkits.basemap import Basemap
 import matplotlib.patches as mpatches
 
 
-# Arquivo que faz as medias de maneira manual
+
 arquivo = 'gpcc_precip_1891_2019.nc'
 nc_f = arquivo
 
-# To show the file variables
-nc_fid = Dataset(arquivo, 'r')  # Dataset is the class behavior to open the file
-# and create an instance of the ncCDF4 class
-# nc_attrs, nc_dims, nc_vars = ncdump(nc_fid)
+
+nc_fid = Dataset(arquivo, 'r')
 lats, lons, precip, time = filename2(nc_f)
-precip = precip[816:1308] / 30.0
 
 dt_time = [dt.date(1891, 1, 1) + dt.timedelta(hours=t)
            for t in time]
 
-# Criando uma série temporal com as mesmas datas do paper
+#Recortando os vetores para ter informções somente no intervalo de 1959 a 2000
+precip = precip[816:1308] / 30.0
 dt_time = dt_time[816:1308]
-print(dt_time[8:11])
 
-# --
+'''
+for i in range(len(precip)):
+    print(f'A data {dt_time[i]} corresponde ao índice {precip[i,0,0]}')
+'''
+
 # Agora vamos criar o plot de linhas, referentes as coordenadas da região central de acordo com CHAN et al
 # Objetivo: Plotar um gráfico de linhas da anomalia de Setembro - Outubro - Novembro no intervalo de 1959 - 2000
+
 
 # Definindo a "Região Central"
 regiao = {'lat1': -5, 'lat2': -25, 'lon1': -69, 'lon2': -40}
 
-# Determinando a posição de nossas latitudes específicas em nosso vetor de latitudes (lats) para Cantareira,
+#Determinando as coordenadas específicas
 lat_idx1 = np.abs(lats - regiao['lat1']).argmin()
 lat_idx2 = np.abs(lats - regiao['lat2']).argmin()
 lon_idx1 = np.abs(lons - regiao['lon1']).argmin()
@@ -44,8 +46,10 @@ medialat = np.ma.mean(precip[:, lat_idx1:lat_idx2, :], axis=1)
 
 # Calculnado a média da longitude
 mediaquadrado = np.ma.mean(medialat[:, lon_idx1:lon_idx2], axis=1)
+#médiaquadrado: vetor temporal constituído pela média de precipição na área determinada
 
 
+#Selecionando cada mês no vetor temporal criado acima
 set1891_2019 = mediaquadrado[8::12]
 out1891_2019 = mediaquadrado[9::12]
 nov1891_2019 = mediaquadrado[10::12]
@@ -69,9 +73,9 @@ media_precip_son = []
 
 for i in range(int(len(precip)/12)):
     delta_data = mediaquadrado[index1:index2]
-    print(delta_data)
+    #print(delta_data)
     media = np.ma.mean(delta_data)
-    print(media)
+    #print(media)
     media_precip_son.append(media)
     index1 += 12
     index2 += 12
@@ -86,7 +90,7 @@ anomalia = media_precip_son - ponto
 # Criando o eixo x
 data = dt_time[0::12]
 
-plt.plot(data,anomalia)
+#plt.plot(data,anomalia)
 #plt.plot(data, anomalia)
 # plt.axhline(0.0,linestyle='--')
 #plt.show()
@@ -119,4 +123,4 @@ rect=mpatches.Rectangle((-70,-25),30,20,
                         color = "purple",
                         linewidth = 2)
 plt.gca().add_patch(rect)
-plt.show()
+#plt.show()
