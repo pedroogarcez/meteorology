@@ -83,12 +83,15 @@ lat_idx1 = np.abs(lats - cant['lat']).argmin()
 lat_idx2 = np.abs(lats - cant2['lat']).argmin()
 lon_idx1 = np.abs(lons - cant['lon']).argmin()
 lon_idx2 = np.abs(lons - cant2['lon']).argmin()
+print(lat_idx1,lat_idx2)
+print(lon_idx1,lon_idx2)
+exit()
 #Calculando a média das latitude (cubo->retangulo)
 medialat = np.ma.mean(precip[:,lat_idx1:lat_idx2,:],axis = 1)
 
 #Calculnado a média da longitude
 mediaquadrado = np.ma.mean(medialat[:,lon_idx1:lon_idx2],axis = 1)
-
+print(mediaquadrado)
 
 #Agora, criamos um vetor que contém as médias da região do Sistema Cantareira. A anomalia de precipitação será calculada para esse espaço
 '''
