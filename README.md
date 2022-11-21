@@ -20,7 +20,7 @@ Python meteorology project developed in Instituto Nacional de Pesquisas Espaciai
 pip install netCDF4
 pip install numpy
 pip install pandas
-pip install matplotlib
+pip install matplotli
 ```
 
 <h2> Climatological situation in 2020 and 2021</h2>
