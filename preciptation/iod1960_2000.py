@@ -53,13 +53,4 @@ plt.plot(data1960_2000, iodSON)
 plt.title('Dipolo de Índico JFM', fontweight='bold')
 plt.axhline(0.0, linestyle='--', color='r')
 '''
-
-
-def variaveis_iod(var1,var2):
-    return var1,var2
-
-data, iod_indice = variaveis_iod(data1960_2000,iodSON)
-print(len(iod_indice))
-
-
 #plt.show()

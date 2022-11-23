@@ -23,8 +23,8 @@ iodindex = df['índice'].tolist()
 
 
 #Limitando nosso vetor data de 1960 a 2000
-dt_time = datas[1080:1560]
-iod = iodindex[1080:1560]
+dt_time = datas[1068:1560]
+iod = iodindex[1068:1560]
 
 
 '''
@@ -40,8 +40,6 @@ index2 = 11
 
 for i in range(int(len(dt_time) / 12)):
     mediaJFM = np.mean(iod[index1:index2:1])
-    print(iod[index1:index2])
-    print(mediaJFM)
     iodSON.append(mediaJFM)
     index1 += 12
     index2 += 12
@@ -55,12 +53,13 @@ plt.plot(data1960_2000, iodSON)
 plt.title('Dipolo de Índico JFM', fontweight='bold')
 plt.axhline(0.0, linestyle='--', color='r')
 '''
-def plot_iod(eixox,eixoy):
-    fig = plt.plot(eixox, eixoy)
-    plt.title('Dipolo de Índico JFM', fontweight='bold')
-    plt.axhline(0.0, linestyle='--', color='r')
-    plt.show()
-    return fig
-plot_iod(data1960_2000,iodSON)
+
+
+def variaveis_iod(var1,var2):
+    return var1,var2
+
+data, iod_indice = variaveis_iod(data1960_2000,iodSON)
+print(len(iod_indice))
+
 
 #plt.show()

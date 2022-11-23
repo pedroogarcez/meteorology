@@ -22,7 +22,7 @@ dt_time = [dt.date(1891, 1, 1) + dt.timedelta(hours=t)
 #Recortando os vetores para ter informções somente no intervalo de 1959 a 2000
 precip = precip[816:1308] / 30.0
 dt_time = dt_time[816:1308]
-
+#print(dt_time)
 '''
 for i in range(len(precip)):
     print(f'A data {dt_time[i]} corresponde ao índice {precip[i,0,0]}')
@@ -87,21 +87,16 @@ for i in range(int(len(precip)/12)):
 # Anomalia = (1) - (2)
 anomalia = media_precip_son - ponto
 
+o = anomalia**2
+print(o[0:3])
+print(np.sum(o[0:3]))
+exit()
 # Criando o eixo x
 data = dt_time[0::12]
 l = np.arange(1960,2001,1)
 plt.bar(l,anomalia)
 #plt.plot(data, anomalia)
 # plt.axhline(0.0,linestyle='--')
-
-def plot_precip(eixox,eixoy):
-    fig2 = plt.bar(l,anomalia)
-    plt.show()
-    return fig2
-
-plot_precip(l,anomalia)
-
-
 #plt.show()
 
 
