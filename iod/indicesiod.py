@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 
 
 #Criando o data frame
-df = pd.read_csv('indian-ocean-dipole-iod (1).csv')
+df = pd.read_csv('/home/pedro/Desktop/repositorios/tutorial/newfile/iod/indian-ocean-dipole-iod (1).csv')
+
 
 plt.figure(figsize=(15,8))
 
@@ -41,7 +42,7 @@ for i in range(int(len(dt_time)/12)):
 	index2 += 12
 	
 #Criando o eixo x para o gráfico iod média JFM
-datamediaJFM1891_2019 = dt_time[0:len(dt_time):12]
+datamediaJFM1891_2019 = dt_time[0::12]
 
 
 #Construindo o gráfico

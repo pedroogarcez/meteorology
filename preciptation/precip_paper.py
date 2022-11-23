@@ -89,11 +89,23 @@ anomalia = media_precip_son - ponto
 
 # Criando o eixo x
 data = dt_time[0::12]
-
-#plt.plot(data,anomalia)
+l = np.arange(1960,2001,1)
+plt.bar(l,anomalia)
 #plt.plot(data, anomalia)
 # plt.axhline(0.0,linestyle='--')
+
+def plot_precip(eixox,eixoy):
+    fig2 = plt.bar(l,anomalia)
+    plt.show()
+    return fig2
+
+plot_precip(l,anomalia)
+
+
 #plt.show()
+
+
+
 
 
 
