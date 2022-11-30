@@ -1,5 +1,4 @@
 from netCDF4 import Dataset 
-import numpy as np
 
 	
 def filename2(fn):
