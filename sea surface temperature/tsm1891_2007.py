@@ -26,6 +26,7 @@ dt_time = [dt.date(1891, 1, 1) + dt.timedelta(hours=t/60)
 units = "minutes since 1891-01-01 00:00"
 calendar = 'gregorian'
 dt_time2 = num2date(time, units=units, calendar=calendar)
+print(dt_time2)
 
 #Nino3: 5N-5S, 170W-90W
 nino1 = {'name': 'El Niño 3.4', 'lat': -5, 'lon': 170}
@@ -82,5 +83,6 @@ data = np.arange(1891,2007)
 plt.plot(dt_time[0:len(dt_time2)-26*12:12],anomalia,'-o')
 plt.plot(dt_time[0:len(dt_time2)-26*12:12],anomalia,'-o')
 plt.axhline(0.0,linestyle='--')
+plt.title('TSM Setembro-Outubro-Novembro')
 plt.show()
 

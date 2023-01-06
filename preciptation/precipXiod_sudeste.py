@@ -1,72 +1,66 @@
-def variavel_iod():
-    import numpy as np
-    import pandas as pd
-    import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
-    # A partir dos dados disponibilizados pela
 
-    # Criando o data frame
-    df = pd.read_csv('/home/pedro/Desktop/repositorios/tutorial/newfile/iod/indian-ocean-dipole-iod (1).csv')
 
-    plt.figure(figsize=(15, 8))
+# -- DIPOLO DO ÍNDICO
 
-    # Transformando a data em datetime64
-    df['Data'] = df['DateTime'].astype('datetime64')
+# Criando o data frame
+df = pd.read_csv('/home/pedro/Desktop/repositorios/tutorial/newfile/iod/indian-ocean-dipole-iod (1).csv')
 
-    # Convertendo para lista os valores de indices e datas
-    datas = df['Data'].tolist()
+plt.figure(figsize=(15, 8))
+# Transformando a data em datetime64
+df['Data'] = df['DateTime'].astype('datetime64')
 
-    iodindex = df['índice'].tolist()
+# Convertendo para lista os valores de indices e datas
+datas = df['Data'].tolist()
+
+iodindex = df['índice'].tolist()
 
     # print(datas[1080])
     # print(datas[1560])
 
-    # Limitando nosso vetor data de 1960 a 2000
-    dt_time = datas[1068:1560]
-    iod = iodindex[1068:1560]
+# Limitando nosso vetor data de 1900 a 2022
 
-    '''
-    for i in range(11):
-        print(f'A data {dt_time[i]} corresponde ao índice {iod[i]}')
-    '''
-
-    # Agora, vamos selecionar os valores do índice IOD referentes aos meses de Setembro, Outubro e Novembro
-
-    iodSON = []
-    index1 = 8
-    index2 = 11
-
-    for i in range(int(len(dt_time) / 12)):
-        mediaJFM = np.mean(iod[index1:index2:1])
-        iodSON.append(mediaJFM)
-        index1 += 12
-        index2 += 12
-
-    # Criando o eixo x para o gráfico iod média JFM
-    data1960_2000 = dt_time[0::12]
-    media = np.mean(iodSON)
-    desvio_padrao = np.std(iodSON)
-    anomalia_nomalizada = (iodSON-media)/desvio_padrao
+dt_time = datas[360:1800]
+iod = iodindex[360:1800]
+#print(len(dt_time[::12]))
+#print(dt_time[0:3])
+#for i in range(2):
+    #print(f'O elemento {iod[0:3]} corresponde a {dt_time[0:3]}')
 
 
-    # Construindo o gráfico
-    '''
-    plt.plot(data1960_2000, iodSON)
-    plt.title('Dipolo de Índico JFM', fontweight='bold')
-    plt.axhline(0.0, linestyle='--', color='r')
-    '''
-    # plt.show()
-    return iodSON, anomalia_nomalizada
+
+# Agora, vamos selecionar os valores do índice IOD referentes aos meses de Janeiro, Fevereiro e Março
+iodSON = []
+index1 = 0
+index2 = 3
+
+for i in range(int(len(dt_time) / 12)):
+    mediaJFM = np.mean(iod[index1:index2:1])
+    iodSON.append(mediaJFM)
+    index1 += 12
+    index2 += 12
+
+# Criando o eixo x para o gráfico iod média JFM
+data1960_2000 = dt_time[0::12]
+media = np.mean(iodSON)
+desvio_padrao = np.std(iodSON)
+anomalia_nomalizada = (iodSON-media)/desvio_padrao
+#print(len(anomalia_nomalizada))
+
+#plt.plot(dt_time[:len(dt_time)-1:12],anomalia_nomalizada)
+#plt.axhline(0.0,linestyle='--')
+#plt.show()
+
+# -- PRECIPITAÇÃO
 
 def variavel_precip():
-    import pandas as pd
     from netCDF4 import Dataset
     from function import filename2
     import numpy as np
     import datetime as dt
-    import matplotlib.pyplot as plt
-    from mpl_toolkits.basemap import Basemap
-    import matplotlib.patches as mpatches
 
     arquivo = 'gpcc_precip_1891_2019.nc'
     nc_f = arquivo
@@ -77,10 +71,12 @@ def variavel_precip():
     dt_time = [dt.date(1891, 1, 1) + dt.timedelta(hours=t)
                for t in time]
 
+
     # Recortando os vetores para ter informções somente no intervalo de 1959 a 2000
-    precip = precip[816:1308] / 30.0
-    dt_time = dt_time[816:1308]
-    # print(dt_time)
+    precip = precip[108::] / 30.0
+    dt_time = dt_time[108::]
+    #print(len(precip))
+
     '''
     for i in range(len(precip)):
         print(f'A data {dt_time[i]} corresponde ao índice {precip[i,0,0]}')
@@ -90,7 +86,8 @@ def variavel_precip():
     # Objetivo: Plotar um gráfico de linhas da anomalia de Setembro - Outubro - Novembro no intervalo de 1959 - 2000
 
     # Definindo a "Região Central"
-    regiao = {'lat1': -5, 'lat2': -25, 'lon1': -69, 'lon2': -40}
+    #regiao = {'lat1': -5, 'lat2': -25, 'lon1': -69, 'lon2': -40}
+    regiao = {'lat1': -19.5, 'lat2': -25, 'lon1': -55, 'lon2': -40}
 
     # Determinando as coordenadas específicas
     lat_idx1 = np.abs(lats - regiao['lat1']).argmin()
@@ -107,11 +104,11 @@ def variavel_precip():
     # médiaquadrado: vetor temporal constituído pela média de precipição na área determinada
 
     # Selecionando cada mês no vetor temporal criado acima
-    set1891_2019 = mediaquadrado[8::12]
-    out1891_2019 = mediaquadrado[9::12]
-    nov1891_2019 = mediaquadrado[10::12]
-    listafinal = set1891_2019 + out1891_2019 + nov1891_2019
-    sum = (set1891_2019 + out1891_2019 + nov1891_2019) / 3.0
+    jan1891_2019 = mediaquadrado[0::12]
+    fev1891_2019 = mediaquadrado[1::12]
+    mar1891_2019 = mediaquadrado[2::12]
+    listafinal = jan1891_2019 + fev1891_2019 + mar1891_2019
+    sum = (jan1891_2019 + fev1891_2019 + mar1891_2019) / 3.0
     ponto = np.mean(sum)
 
     # -- SELECIONANDO OS MESES DE JFM DE 1891 - 2019 NA REGIÃO SUDESTE
@@ -121,8 +118,8 @@ def variavel_precip():
     mediatrimestre1891_2019 = (set1891_2019 + out1891_2019 + nov1891_2019) / 3.0
 
     # -- (1) SELECIONANDO OS MESES DE SON CADA ANO NA REGIÃO CENTRAL
-    index1 = 8
-    index2 = 11
+    index1 = 0
+    index2 = 3
     media_precip_son = []
 
 
@@ -148,4 +145,16 @@ def variavel_precip():
     # Criando o eixo x
     data = dt_time[0::12]
     l = np.arange(1960, 2001, 1)
-    return l, anomalia, anomalia_nomalizada_precip
+    return data, anomalia, anomalia_nomalizada_precip
+l,anomalia,anomalia_nomalizada_precip = variavel_precip()
+
+fig,ax1 = plt.subplots(figsize=(13,5))
+ax1.plot(l,anomalia_nomalizada_precip,label='Precipitação',color='r')
+ax1.legend()
+ax1.plot(l,anomalia_nomalizada,label='Dipolo do Índico',color='blue')
+ax1.legend()
+print(len(l),len(anomalia_nomalizada_precip),len(anomalia_nomalizada))
+plt.show()
+
+
+

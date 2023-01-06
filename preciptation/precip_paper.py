@@ -22,7 +22,7 @@ dt_time = [dt.date(1891, 1, 1) + dt.timedelta(hours=t)
 #Recortando os vetores para ter informções somente no intervalo de 1959 a 2000
 precip = precip[816:1308] / 30.0
 dt_time = dt_time[816:1308]
-#print(dt_time)
+
 '''
 for i in range(len(precip)):
     print(f'A data {dt_time[i]} corresponde ao índice {precip[i,0,0]}')
@@ -41,6 +41,7 @@ lat_idx2 = np.abs(lats - regiao['lat2']).argmin()
 lon_idx1 = np.abs(lons - regiao['lon1']).argmin()
 lon_idx2 = np.abs(lons - regiao['lon2']).argmin()
 
+
 # Calculando a média das latitude (cubo->retangulo)
 medialat = np.ma.mean(precip[:, lat_idx1:lat_idx2, :], axis=1)
 
@@ -56,7 +57,6 @@ nov1891_2019 = mediaquadrado[10::12]
 listafinal = set1891_2019+out1891_2019+nov1891_2019
 sum = (set1891_2019+out1891_2019+nov1891_2019)/3.0
 ponto = np.mean(sum)
-
 
 
 # -- SELECIONANDO OS MESES DE JFM DE 1891 - 2019 NA REGIÃO SUDESTE
@@ -90,7 +90,7 @@ anomalia = media_precip_son - ponto
 o = anomalia**2
 print(o[0:3])
 print(np.sum(o[0:3]))
-exit()
+
 # Criando o eixo x
 data = dt_time[0::12]
 l = np.arange(1960,2001,1)
@@ -98,6 +98,7 @@ plt.bar(l,anomalia)
 #plt.plot(data, anomalia)
 # plt.axhline(0.0,linestyle='--')
 #plt.show()
+print(len(anomalia))
 
 
 

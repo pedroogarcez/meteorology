@@ -29,7 +29,8 @@ precip = precip/30.0
 dt_time = [dt.date(1891, 1, 1) + dt.timedelta(hours=t) 
            for t in time]
 
-
+print(dt_time)
+exit()
 
 #Objetivo: Calcular a anomalia referente a JFM de 2019
 #AnomaliaJFM2019 = médiaJFM2019 - mediaJFM1891-2019
